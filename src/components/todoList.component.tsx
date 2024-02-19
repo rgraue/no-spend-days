@@ -31,32 +31,33 @@ export const TodoList = () => {
     return;
   };
 
-  function handleRemoveTodo(todo) {
-    const id = new Realm.BSON.ObjectId();
+  function handleRemoveTodo(item: Todo) {
+    console.log(item);
+    const id = new Realm.BSON.ObjectId(item._id.toHexString());
     dispatch(
       removeTodo({
-        id: todo.id,
-        name: todo.name,
+        id: item._id.toHexString(),
+        name: item.name,
       }),
     );
-    console.log('redux remove', todo.name, id);
+    console.log('redux remove', item.name, item._id);
     realm.write(() => {
-      console.log(todo.id);
-      realm.delete(realm.objectForPrimaryKey('Todo', todo.id));
+      console.log('realm remove', id);
+      realm.delete(realm.objectForPrimaryKey(Todo, id));
       // realm.delete({todo});
-      todo = null;
     });
   }
 
-  const Item = ({
-    item,
-  }: ListRenderItemInfo<Todo & Realm.Object<unknown, never>>) => {
+  const Item = ({ item }: ListRenderItemInfo<Todo>) => {
     return (
       <>
         <ListItem
           title={<Text>{item.name}</Text>}
           accessoryLeft={
-            <MyButton text={'Remove Todo'} buttonHandler={handleRemoveTodo} />
+            <MyButton
+              text={'Remove Todo'}
+              buttonHandler={() => handleRemoveTodo(item)}
+            />
           }
           description={<Text>{item._id.toHexString()}</Text>}
           accessoryRight={isReduxAccessory(item._id.toHexString())}
