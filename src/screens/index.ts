@@ -1,2 +1,3 @@
 export * from './home.screen';
-export * from './todo.screen';
+export * from './settings.screen';
+export * from './history.screen';

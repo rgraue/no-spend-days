@@ -1,3 +1,5 @@
-export * from './myButton.component';
-export * from './todoForm.component';
-export * from './todoList.component';
+// Export all from /components
+export * from './buttons/standardButton.component';
+export * from './buttons/iconButton.component';
+export * from './nav.componet';
+export * from './screen.component';

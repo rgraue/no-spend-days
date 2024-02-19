@@ -37,6 +37,9 @@ module.exports = {
           '@navigation': ([, name]) => {
             return './src/navigation/';
           },
+          '@constants': ([, name]) => {
+            return './src/constants/'
+          }
         },
       },
     ],
