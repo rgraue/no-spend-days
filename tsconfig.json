@@ -15,7 +15,8 @@
       "@store": ["src/store/index"],
       "@store/*": ["src/store/*"],
       "@appRealm": ["src/appRealm/index"],
-      "@navigation": ["src/navigation/index"]
+      "@navigation": ["src/navigation/index"],
+      "@constants": ["src/constants/index"]
     }
   }
 }

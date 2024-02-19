@@ -1,30 +1,42 @@
 import React from 'react';
-import { Layout, Text } from '@ui-kitten/components';
+import { Text } from '@ui-kitten/components';
 import { StyleSheet } from 'react-native';
-import { MyButton } from '@components';
+import { NavigationProp } from '@react-navigation/native';
+import { IconButton, Screen } from '@components';
+import { navToPage } from '@utils';
+import { SCREEN } from '@constants';
 
-export const HomeScreen = ({ navigation }) => {
-  function switchPage() {
-    navigation.navigate('Todo');
-  }
+export const HomeScreen = ({
+  navigation,
+}: {
+  navigation: NavigationProp<any>;
+}) => {
+  const renderSettingsButton = (
+    <IconButton
+      name="menu-outline"
+      buttonHandler={() => navToPage(navigation, SCREEN.SETTINGS)}
+    />
+  );
+
+  const renderHistoryButton = (
+    <IconButton
+      name="activity-outline"
+      buttonHandler={() => navToPage(navigation, SCREEN.HISTORY)}
+    />
+  );
 
   return (
-    <Layout style={styles.container}>
+    <Screen
+      leftNavControl={renderHistoryButton}
+      rightNavControl={renderSettingsButton}>
       <Text style={styles.text} category="h1">
-        Welcome
+        No Spend Days
       </Text>
-      <Text>Edit src files to start creating</Text>
-      <MyButton text={'TODO Page'} buttonHandler={switchPage} />
-    </Layout>
+    </Screen>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   text: {
     fontSize: 48,
   },
