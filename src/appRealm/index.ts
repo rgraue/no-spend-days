@@ -1,9 +1,16 @@
 import { createRealmContext } from '@realm/react';
-import { Todo } from './todo';
+import { Expense } from './expense';
+import { Day } from './day';
+import { Settings } from './settings';
+import { User } from './user';
 
-export * from './todo';
+export * from './expense';
+export * from './day';
+export * from './settings';
+export * from './user';
 
-export const TodoRealmContext = createRealmContext({
-  schema: [Todo],
+// Realm Context for persistent data
+export const realmContext = createRealmContext({
+  schema: [Expense, Day, Settings, User],
   deleteRealmIfMigrationNeeded: true,
 });
