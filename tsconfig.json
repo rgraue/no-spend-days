@@ -4,6 +4,7 @@
     "noImplicitAny": false,
     "baseUrl": "./",
     "jsx": "react-native",
+    "types": ["node", "jest"],
     "paths": {
       "@components": ["src/components/index"],
       "@controllers": ["src/controllers/index"],
@@ -18,5 +19,5 @@
       "@navigation": ["src/navigation/index"],
       "@constants": ["src/constants/index"]
     }
-  }
+  },
 }

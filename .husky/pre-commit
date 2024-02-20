@@ -6,7 +6,7 @@ npm run prettier
 npm run lint
 
 echo "Running local unit test"
-# npm run test
+npm run test
 
 # capture prettier and linting changes
-git add .
+# git add .
