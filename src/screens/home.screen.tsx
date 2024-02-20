@@ -5,12 +5,14 @@ import { NavigationProp } from '@react-navigation/native';
 import { IconButton, Screen } from '@components';
 import { navToPage } from '@utils';
 import { SCREEN } from '@constants';
+import { useAppSelector } from '@store';
 
 export const HomeScreen = ({
   navigation,
 }: {
   navigation: NavigationProp<any>;
 }) => {
+  const today = useAppSelector(({ meta }) => meta.today);
   const renderSettingsButton = (
     <IconButton
       name="menu-outline"
@@ -32,6 +34,7 @@ export const HomeScreen = ({
       <Text style={styles.text} category="h1">
         No Spend Days
       </Text>
+      <Text>{today.format('YYYY-MM-DD')}</Text>
     </Screen>
   );
 };

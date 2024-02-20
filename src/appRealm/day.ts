@@ -1,6 +1,5 @@
 import { Realm } from '@realm/react';
 import { Dayjs } from 'dayjs';
-import { BSON } from 'node_modules/realm/dist/bundle';
 import { ALL_DAYS, getDayOfWeek } from '@utils';
 
 export class Day extends Realm.Object<Day> {
@@ -14,7 +13,7 @@ export class Day extends Realm.Object<Day> {
 
   public static generate(date: Dayjs, expense?: Realm.BSON.ObjectId) {
     return {
-      _id: new BSON.ObjectId(),
+      _id: new Realm.BSON.ObjectId(),
       date: date.format('YYYYMMDD'),
       year: date.year(),
       month: date.month(),
