@@ -1,4 +1,4 @@
-import { Dayjs } from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 
 export enum WEEK_DAYS {
   MONDAY = 'Monday',
@@ -51,17 +51,17 @@ export const getDayOfWeek = (n: Number): ALL_DAYS => {
 // true if weekend
 // false if weekday
 export const isWeekend = (date: Dayjs | Number | ALL_DAYS) => {
-  if (date instanceof Dayjs) {
-    return determineWeekendFromEnunm(getDayOfWeek(date.day()));
-  } else if (date instanceof Number) {
+  if (typeof date == 'number') {
     return determineWeekendFromEnunm(getDayOfWeek(date));
+  } else if (date instanceof dayjs) {
+    return determineWeekendFromEnunm(getDayOfWeek((date as Dayjs).day()));
   } else {
-    return determineWeekendFromEnunm(date);
+    return determineWeekendFromEnunm(date as ALL_DAYS);
   }
 };
 
 const determineWeekendFromEnunm = (dayOfWeek: ALL_DAYS) => {
-  if (dayOfWeek in WEEKEND_DAYS) {
+  if (dayOfWeek.toUpperCase() in WEEKEND_DAYS) {
     return true;
   }
 
