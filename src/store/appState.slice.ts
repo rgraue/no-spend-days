@@ -1,19 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
 
 export interface MetaSlice {
-  today: Dayjs;
-  userId: Realm.BSON.ObjectId | null;
+  today: string;
+  userId: string | null;
 }
 
 export const metaSlice = createSlice({
   name: 'meta',
   initialState: {
-    today: dayjs(),
+    today: dayjs().format('YYYYMMDD'),
     userId: null,
   } as MetaSlice,
   reducers: {
-    setUser: (state, action: PayloadAction<Realm.BSON.ObjectId>) => {
+    setUser: (state, action: PayloadAction<string>) => {
       state.userId = action.payload;
     },
   },

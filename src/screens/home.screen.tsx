@@ -12,7 +12,7 @@ export const HomeScreen = ({
 }: {
   navigation: NavigationProp<any>;
 }) => {
-  const today = useAppSelector(({ meta }) => meta.today);
+  const { today, userId } = useAppSelector(({ meta }) => meta);
   const renderSettingsButton = (
     <IconButton
       name="menu-outline"
@@ -34,7 +34,8 @@ export const HomeScreen = ({
       <Text style={styles.text} category="h1">
         No Spend Days
       </Text>
-      <Text>{today.format('YYYY-MM-DD')}</Text>
+      <Text>{today}</Text>
+      <Text>{userId!}</Text>
     </Screen>
   );
 };
