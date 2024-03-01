@@ -1,5 +1,5 @@
 import { Realm } from '@realm/react';
-import { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
 
 export class User extends Realm.Object<User> {
   _id!: Realm.BSON.ObjectId;
@@ -7,7 +7,7 @@ export class User extends Realm.Object<User> {
   lastName!: string;
   startDate!: string; // use dayjs to parse
   isNewUser!: boolean;
-  settingsId!: Realm.BSON.ObjectId[];
+  settingsId!: Realm.BSON.ObjectId;
 
   public static generateNew(
     firstName: string,
@@ -18,7 +18,7 @@ export class User extends Realm.Object<User> {
       _id: new Realm.BSON.ObjectId(),
       firstName: firstName,
       lastName: lastName,
-      startDate: new Dayjs().format('YYYYMMDD'),
+      startDate: dayjs().format('YYYYMMDD'),
       isNewUser: true,
       settingsId: settingsId,
     };

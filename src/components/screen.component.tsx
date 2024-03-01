@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Layout } from '@ui-kitten/components';
 import { StyleSheet } from 'react-native';
 import { Nav } from './nav.componet';
 
-export const Screen = ({ leftNavControl, rightNavControl, children }) => {
+export const Screen = ({
+  leftNavControl = null,
+  rightNavControl = null,
+  children,
+}: {
+  leftNavControl?: ReactNode;
+  rightNavControl?: ReactNode;
+  children?: any;
+}) => {
   return (
     <Layout style={styles.container}>
       <Layout style={styles.nav}>
