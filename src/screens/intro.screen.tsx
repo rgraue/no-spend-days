@@ -1,9 +1,8 @@
 import { Settings, User, realmContext } from '@appRealm';
-import { Screen } from '@components';
+import { Screen, StandardButton } from '@components';
 import { SCREEN } from '@constants';
 import { NavigationProp } from '@react-navigation/native';
-import { setUser, useAppDispatch, useAppSelector } from '@store';
-import { Text } from '@ui-kitten/components';
+import { setSettings, setUser, useAppDispatch, useAppSelector } from '@store';
 import { navToPage } from '@utils';
 import React, { useEffect } from 'react';
 import { ActivityIndicator } from 'react-native';
@@ -21,28 +20,30 @@ export const IntroScreen = ({
   const settings = useQuery(Settings);
   const realm = useRealm();
 
+  // redux
   const dispatch = useAppDispatch();
   const { userId } = useAppSelector(({ meta }) => meta);
 
   useEffect(() => {
+    if (userId) {
+      navToPage(navigation, SCREEN.HOME);
+    }
+  }, [userId, navigation]);
+
+  const register = () => {
     if (settings.isEmpty()) {
       createNewSettings();
     }
     if (user.isEmpty()) {
       createNewUser();
-    } else {
-      dispatch(setUser(user[0]._id.toString()));
     }
-
-    if (userId) {
-      navToPage(navigation, SCREEN.HOME);
-    }
-  });
+  };
 
   const createNewUser = () => {
     realm.write(() => {
       realm.create(User, User.generateNew('Ryan', 'Test', settings[0]._id));
     });
+    dispatch(setUser(user[0]._id.toString()));
   };
 
   const createNewSettings = () => {
@@ -50,12 +51,13 @@ export const IntroScreen = ({
     realm.write(() => {
       realm.create(Settings, Settings.generate());
     });
+    dispatch(setSettings(settings[0]._id.toString()));
   };
 
   return (
     <Screen>
       <ActivityIndicator size={'small'} />
-      <Text>hello</Text>
+      <StandardButton text={'Login'} buttonHandler={register} />
     </Screen>
   );
 };

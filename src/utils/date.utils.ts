@@ -51,7 +51,7 @@ export const getDayOfWeek = (n: Number): ALL_DAYS => {
 // true if weekend
 // false if weekday
 export const isWeekend = (date: Dayjs | Number | ALL_DAYS) => {
-  if (typeof date == 'number') {
+  if (typeof date === 'number') {
     return determineWeekendFromEnunm(getDayOfWeek(date));
   } else if (date instanceof dayjs) {
     return determineWeekendFromEnunm(getDayOfWeek((date as Dayjs).day()));

@@ -12,7 +12,7 @@ export const HomeScreen = ({
 }: {
   navigation: NavigationProp<any>;
 }) => {
-  const { today, userId } = useAppSelector(({ meta }) => meta);
+  const { today, userId, settingsId } = useAppSelector(({ meta }) => meta);
   const renderSettingsButton = (
     <IconButton
       name="menu-outline"
@@ -36,6 +36,7 @@ export const HomeScreen = ({
       </Text>
       <Text>{today}</Text>
       <Text>{userId!}</Text>
+      <Text>{settingsId!}</Text>
     </Screen>
   );
 };
