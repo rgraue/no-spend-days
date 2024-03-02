@@ -41,13 +41,13 @@ export const SettingScreen = ({
 
   const renderHomeButton = (
     <IconButton
-      name="arrow-ios-back-outline"
-      buttonHandler={() => navToPage(navigation, SCREEN.INTRO)}
+      name="home-outline"
+      buttonHandler={() => navToPage(navigation, SCREEN.HOME)}
     />
   );
 
   return (
-    <Screen leftNavControl={renderHomeButton} rightNavControl={null}>
+    <Screen leftNavControl={null} rightNavControl={renderHomeButton}>
       <StandardButton text={'delete user'} buttonHandler={deleteUser} />
     </Screen>
   );

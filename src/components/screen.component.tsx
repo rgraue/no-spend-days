@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import { Layout } from '@ui-kitten/components';
 import { StyleSheet } from 'react-native';
 import { Nav } from './nav.componet';
+import { theme } from '@constants';
 
 export const Screen = ({
   leftNavControl = null,
@@ -14,9 +15,7 @@ export const Screen = ({
 }) => {
   return (
     <Layout style={styles.container}>
-      <Layout style={styles.nav}>
-        <Nav leftControl={leftNavControl} rightControl={rightNavControl} />
-      </Layout>
+      <Nav leftControl={leftNavControl} rightControl={rightNavControl} />
       <Layout style={styles.content}>{children}</Layout>
     </Layout>
   );
@@ -29,13 +28,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingTop: '9%',
     paddingHorizontal: '2%',
-  },
-  nav: {
-    flex: 1,
-    width: '100%',
+    backgroundColor: theme.background_primary_1,
   },
   content: {
     flex: 9,
     paddingHorizontal: '3%',
+    backgroundColor: theme.background_primary_1,
   },
 });

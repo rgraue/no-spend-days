@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Icon } from '@ui-kitten/components';
 import { StyleSheet } from 'react-native';
+import { theme } from '@constants';
 
 export const IconButton = ({
   name,
@@ -14,7 +15,9 @@ export const IconButton = ({
       style={styles.button}
       onPress={buttonHandler}
       appearance="ghost"
-      accessoryLeft={<Icon name={name}></Icon>}></Button>
+      accessoryLeft={
+        <Icon fill={theme.button_primary_1} name={name} />
+      }></Button>
   );
 };
 

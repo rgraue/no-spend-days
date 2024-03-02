@@ -18,9 +18,17 @@ export const NavigationRoot = () => {
         screenOptions={{ headerShown: false, gestureEnabled: false }}
         initialRouteName={SCREEN.INTRO}>
         <Stack.Screen name={SCREEN.INTRO} component={IntroScreen} />
-        <Stack.Screen name={SCREEN.HISTORY} component={HistoryScreen} />
+        <Stack.Screen
+          name={SCREEN.HISTORY}
+          component={HistoryScreen}
+          options={{ animation: 'fade' }}
+        />
         <Stack.Screen name={SCREEN.HOME} component={HomeScreen} />
-        <Stack.Screen name={SCREEN.SETTINGS} component={SettingScreen} />
+        <Stack.Screen
+          name={SCREEN.SETTINGS}
+          component={SettingScreen}
+          options={{ animation: 'fade' }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
