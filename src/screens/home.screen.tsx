@@ -6,6 +6,7 @@ import { IconButton, Screen } from '@components';
 import { navToPage } from '@utils';
 import { SCREEN } from '@constants';
 import { useAppSelector } from '@store';
+import { theme } from '@constants';
 
 export const HomeScreen = ({
   navigation,
@@ -44,5 +45,6 @@ export const HomeScreen = ({
 const styles = StyleSheet.create({
   text: {
     fontSize: 48,
+    fontFamily: theme.font_family_primary,
   },
 });

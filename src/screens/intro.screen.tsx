@@ -24,11 +24,26 @@ export const IntroScreen = ({
   const dispatch = useAppDispatch();
   const { userId } = useAppSelector(({ meta }) => meta);
 
+  // run once on on initial load.
+  // enters app if user already exists
+  useEffect(() => {
+    if (!user.isEmpty()) {
+      setAppState();
+    }
+  }, []); // eslint-disable-line
+
+  // when userId is changed and valid enter app
   useEffect(() => {
     if (userId) {
       navToPage(navigation, SCREEN.HOME);
     }
   }, [userId, navigation]);
+
+  // sets app redux state
+  const setAppState = () => {
+    dispatch(setSettings(settings[0]._id.toString()));
+    dispatch(setUser(user[0]._id.toString()));
+  };
 
   const register = () => {
     if (settings.isEmpty()) {
@@ -47,7 +62,6 @@ export const IntroScreen = ({
   };
 
   const createNewSettings = () => {
-    console.log('Creating new default settings');
     realm.write(() => {
       realm.create(Settings, Settings.generate());
     });

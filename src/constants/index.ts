@@ -1,3 +1,5 @@
+export * from './theme';
+
 export enum SCREEN {
   HOME = 'HOME',
   SETTINGS = 'SETTINGS',
