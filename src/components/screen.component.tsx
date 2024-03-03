@@ -15,7 +15,9 @@ export const Screen = ({
 }) => {
   return (
     <Layout style={styles.container}>
-      <Nav leftControl={leftNavControl} rightControl={rightNavControl} />
+      <Layout style={styles.navContainer}>
+        <Nav leftControl={leftNavControl} rightControl={rightNavControl} />
+      </Layout>
       <Layout style={styles.content}>{children}</Layout>
     </Layout>
   );
@@ -29,6 +31,10 @@ const styles = StyleSheet.create({
     paddingTop: '9%',
     paddingHorizontal: '2%',
     backgroundColor: theme.background_primary_1,
+  },
+  navContainer: {
+    flex: 1,
+    backgroundColor: 'transparent',
   },
   content: {
     flex: 9,

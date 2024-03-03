@@ -4,8 +4,9 @@ export const theme = {
   background_primary_2: '#D4C0F6',
   background_primary_3: '#B7A6D4',
 
-  text_white: 'white',
-  text_black: 'black',
+  text_color_white: 'white',
+  text_color_black: 'black',
+  text_color_primary_1: '#7D7197',
 
   // font families
   // naming uses PostScript Naming convention
@@ -14,4 +15,6 @@ export const theme = {
   font_family_secondary: 'LoveYaLikeASister-Regular',
 
   button_primary_1: '#B107E6',
+  button_primary_2: '#EEC7FF',
+  button_primary_3: '#D6A5D4',
 };

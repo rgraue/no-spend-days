@@ -48,7 +48,7 @@ export const SettingScreen = ({
 
   return (
     <Screen leftNavControl={null} rightNavControl={renderHomeButton}>
-      <StandardButton text={'delete user'} buttonHandler={deleteUser} />
+      <StandardButton text={'delete user'} buttonHandler={() => deleteUser()} />
     </Screen>
   );
 };
