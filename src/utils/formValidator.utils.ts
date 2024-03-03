@@ -69,7 +69,7 @@ const validateNumberNegative = (value: number): boolean => {
 };
 
 const validateNumber = (value: number): boolean => {
-  return isNaN(value);
+  return !isNaN(value);
 };
 
 const validateMoney = (value: string): boolean => {
