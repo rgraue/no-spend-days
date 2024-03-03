@@ -16,12 +16,15 @@ export const metaSlice = createSlice({
   } as MetaSlice,
   reducers: {
     setUser: (state, action: PayloadAction<string>) => {
+      console.log('setting redux userId', action.payload);
       state.userId = action.payload;
     },
     setSettings: (state, action: PayloadAction<string>) => {
+      console.log('setting redux settingsId', action.payload);
       state.settingsId = action.payload;
     },
     clearState: state => {
+      console.log('clearing redux user state');
       state.userId = null;
       state.settingsId = null;
     },
